@@ -1,0 +1,22 @@
+{
+  "name": "Alice × Kixly Manager Control Center",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Manager Control Center",
+      "visibility": "private",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm ci",
+  "postStartCommand": "nohup npm run dev > /tmp/manager-dashboard-dev.log 2>&1 < /dev/null &"
+}
